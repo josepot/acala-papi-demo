@@ -1,0 +1,8 @@
+.DS_Store
+node_modules
+coverage
+.cache
+.vscode
+.pnpm-store
+build
+codegen
