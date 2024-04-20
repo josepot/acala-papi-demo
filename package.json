@@ -25,12 +25,8 @@
     "trailingComma": "all"
   },
   "dependencies": {
-    "@polkadot-api/cli": "0.0.1-28172e65e6c4fb53198b9932ff624f8eef05fe68.1.0",
-    "@polkadot-api/client": "0.0.1-28172e65e6c4fb53198b9932ff624f8eef05fe68.1.0",
-    "@polkadot-api/node-polkadot-provider": "0.0.1-28172e65e6c4fb53198b9932ff624f8eef05fe68.1.0",
-    "@polkadot-api/sm-provider": "0.0.1-28172e65e6c4fb53198b9932ff624f8eef05fe68.1.0",
-    "@substrate/connect-known-chains": "^1.1.2",
-    "smoldot": "^2.0.23"
+    "polkadot-api": "latest",
+    "@polkadot-api/descriptors": "latest"
   },
   "polkadot-api": {
     "acala": {

@@ -1,10 +1,10 @@
-import { start } from "smoldot"
-import { polkadot as polkadotChainspec } from "@substrate/connect-known-chains"
-import { getSmProvider } from "@polkadot-api/sm-provider"
-import { getChain } from "@polkadot-api/node-polkadot-provider"
-import { Enum, createClient } from "@polkadot-api/client"
+import { start } from "polkadot-api/smoldot"
+import { chainSpec as polkadotChainspec } from "polkadot-api/chains/polkadot"
+import { getSmProvider } from "polkadot-api/sm-provider"
+import { withLogsRecorder } from "polkadot-api/logs-provider"
+import { Enum, createClient } from "polkadot-api"
 import chainSpec from "./acala-chainspec"
-import acala from "./codegen/acala"
+import { acala } from "@polkadot-api/descriptors"
 
 const smoldot = start()
 
@@ -13,14 +13,13 @@ const polkadot = await smoldot.addChain({
   disableJsonRpc: true,
 })
 
+const acalaChain = smoldot.addChain({
+  chainSpec,
+  potentialRelayChains: [polkadot],
+})
+
 const client = createClient(
-  getChain({
-    provider: getSmProvider(smoldot, {
-      chainSpec,
-      potentialRelayChains: [polkadot],
-    }),
-    keyring: [],
-  }),
+  withLogsRecorder(console.log, getSmProvider(acalaChain)),
 )
 
 const acalaApi = client.getTypedApi(acala)

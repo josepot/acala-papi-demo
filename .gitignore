@@ -5,4 +5,3 @@ coverage
 .vscode
 .pnpm-store
 build
-codegen
